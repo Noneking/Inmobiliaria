@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-nov-2014 20:09:36 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Hibernate_mapping_files.Agencia" table="agencia" catalog="inmobiliaria" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="direccion" type="string">
+            <column name="direccion" length="50" />
+        </property>
+        <property name="titular" type="string">
+            <column name="titular" length="9" />
+        </property>
+        <property name="telefono" type="java.lang.Integer">
+            <column name="telefono" />
+        </property>
+        <property name="fax" type="java.lang.Integer">
+            <column name="fax" />
+        </property>
+        <property name="zona" type="java.lang.Integer">
+            <column name="zona" />
+        </property>
+        <set name="vendedoreses" table="vendedores" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_agencia" not-null="true" />
+            </key>
+            <one-to-many class="Hibernate_mapping_files.Vendedores" />
+        </set>
+        <set name="inmuebles" table="inmueble" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="agencia" />
+            </key>
+            <one-to-many class="Hibernate_mapping_files.Inmueble" />
+        </set>
+    </class>
+</hibernate-mapping>

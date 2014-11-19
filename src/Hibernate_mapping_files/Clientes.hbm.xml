@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-nov-2014 20:09:36 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Hibernate_mapping_files.Clientes" table="clientes" catalog="inmobiliaria" optimistic-lock="version">
+        <id name="dni" type="string">
+            <column name="dni" length="9" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="50" />
+        </property>
+        <set name="vendedoreses" table="cliente_vendedor" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="dni_cliente" length="9" not-null="true" />
+            </key>
+            <many-to-many entity-name="Hibernate_mapping_files.Vendedores">
+                <column name="dni_vendedor" length="9" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

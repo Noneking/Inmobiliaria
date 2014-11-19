@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18-nov-2014 20:09:36 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Hibernate_mapping_files.Piso" table="piso" catalog="inmobiliaria" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="inmueble" class="Hibernate_mapping_files.Inmueble" fetch="select">
+            <column name="codigo" />
+        </many-to-one>
+        <property name="habitaciones" type="java.lang.Integer">
+            <column name="habitaciones" />
+        </property>
+        <property name="banios" type="java.lang.Integer">
+            <column name="banios" />
+        </property>
+        <property name="gas" type="string">
+            <column name="gas" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>
